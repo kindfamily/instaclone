@@ -1,9 +1,35 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+    <!-- Facebook Meta Tags / 페이스북 오픈 그래프 -->
+    <meta property="og:url" content="http://kindtiger.dothome.co.kr/insta">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="instagram">
+    <meta property="og:description" content="instagram clone">
+    <meta property="og:image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
+    .
+    <!-- Twitter Meta Tags / 트위터 -->
+    <meta name="twitter:card" content="instagram clone">
+    <meta name="twitter:title" content="instagram">
+    <meta name="twitter:description" content="instagram clone">
+    <meta name="twitter:image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
+
+    <!-- Google / Search Engine Tags / 구글 검색 엔진 -->
+    <meta itemprop="name" content="instagram">
+    <meta itemprop="description" content="instagram clone">
+    <meta itemprop="image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
+
+
+    <title>instagram</title>
     
     <link rel="stylesheet" href="{% static 'css/common.css' %}">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
@@ -11,42 +37,57 @@
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'js/insta.js' %}">
-    <link rel="stylesheet" href="{% static 'js/rander_page.js' %}">
-    
+    <link rel="shortcut icon" href="{% static 'imgs/instagram.png' %}">
+
 </head>
 <body>
-    
-    <section id="container">
-        <header id="header">
-            <section class="h_inner">
-                <h1 class="logo">
+
+
+<section id="container">
+
+
+    <header id="header">
+        <section class="h_inner">
+
+            <h1 class="logo">
+                <a href="index.html">
                     <div class="sprite_insta_icon"></div>
                     <div>
                         <div class="sprite_write_logo"></div>
                     </div>
-                </h1>
-                <div class="search_field">
-                    <input type="text" placeholder="검색" tabindex="0">
-                    <div class="fake_field">
-                        <span class="sprite_small_search_icon"></span>
-                        <span>검색</span>
-                    </div>
-                </div>
-                
-                <div class="right_icons">
-                    <div class="sprite_camera_icon"><a href="#"></a></div>
-                    <div class="sprite_compass_icon"><a href="#"></a></div>
-                    <div class="sprite_heart_icon_outline"><a href="#"></a></div>
-                    <div class="sprite_user_icon_outline"><a href="#"></a></div>
-                </div>
-            </section>
-        </header>
-        
-        {% block content %}
-        {% endblock %}
+                </a>
+            </h1>
 
-    </section>
+            <div class="search_field">
+                <input type="text" placeholder="검색" tabindex="0">
+
+                <div class="fake_field">
+                    <span class=sprite_small_search_icon></span>
+                    <span>검색</span>
+                </div>
+            </div>
+
+
+            <div class="right_icons">
+                <div class="sprite_camera_icon"><a href="new_post.html"></a></div>
+                <div class="sprite_compass_icon"><a href="#"></a></div>
+                <div class="sprite_heart_icon_outline"><a href="follow.html"></a></div>
+                <div class="sprite_user_icon_outline"><a href="login.html"></a></div>
+            </div>
+        </section>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+
+</section>
+    
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="{% static 'js/insta.js' %}">
+<link rel="stylesheet" href="{% static 'js/rander_page.js' %}">
+
+
+
 </body>
 </html>

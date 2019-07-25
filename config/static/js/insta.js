@@ -1,8 +1,4 @@
-
-
 (function () {
-
-
     // const btn = document.querySelector('.heart_btn');
     const header = document.querySelector('#header');
     const side_box = document.querySelector('.side_box');
