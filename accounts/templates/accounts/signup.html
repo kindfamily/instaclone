@@ -1,0 +1,35 @@
+{% extends "accounts/layout.html" %}
+
+{% block content %}
+<div id="main_container">
+    
+    <div class="form_container">
+        
+        
+        <div class="form">
+            
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                    {{ form.as_p }}
+                <input id="submit_btn" type="submit" value="가입" class="submit_btn">
+            </form>
+            
+        </div>
+        
+        <div class="bottom_box">
+            
+            <div>
+                
+                <span>아이디가 있다면</span><a href="">로그인</a>
+                
+            </div>
+            
+        </div>
+        
+        
+    </div>
+    
+    
+</div>
+
+{% endblock %}

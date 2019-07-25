@@ -1,0 +1,101 @@
+
+
+.hori_cont{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+
+.profile_wrap{
+    width: 40%;
+
+}
+.profile_img{
+    width: 152px;
+    height: 152px;
+    overflow:hidden;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profile_img img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.detail{
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+}
+.detail .top{
+    display: flex;
+    align-items: center;
+}
+
+.detail .top .user_name{
+    font-size: 35px;
+    font-weight: 200;
+    display: inline-block;
+    padding-right: 25px;
+    margin-top: 10px;
+}
+
+.detail .top > a{
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 114px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    color: #262626;
+    padding: 3px 20px;
+    font-weight: 600;
+    vertical-align: text-bottom;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+.detail .middle{
+    display: flex;
+    height: 50px;
+    padding: 18px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.detail .middle > li{
+    margin-right: 35px;
+}
+
+
+.mylist_contents{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.mylist_contents .pic{
+    max-width:300px;
+    max-height:300px;
+    overflow:hidden;
+    margin-bottom: 18px;
+
+
+}
+
+.mylist_contents .pic img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
