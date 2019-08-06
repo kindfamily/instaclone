@@ -3,8 +3,6 @@ from django.db import models
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 
-# Create your models here.
-
 def photo_path(instance, filename):
     from time import strftime
     from random import choice
@@ -25,13 +23,32 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    like_user_set = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                           blank=True,
+                                           related_name='like_user_set',
+                                           through='Like')  # post.like_set 으로 접근 가능
+
     class Meta:
         ordering = ['-created_at']
+        
+    @property
+    def like_count(self):
+        return self.like_user_set.count()
+    # count() 데이터의 개수를 샘
     
     def __str__(self):
         return self.content
     
-    
+class Like(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = (
+            ('user', 'post')
+        )
     
     
     

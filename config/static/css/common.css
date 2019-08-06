@@ -37,6 +37,16 @@ body {
     height: 22px;
 }
 
+.sprite_heart_icon_outline.on{
+    background: url('../imgs/4f7ac8e0a402.png') no-repeat -26px -261px;
+    animation:heart_bounce 1s linear;
+}
+
+.sprite_heart_icon_outline.off{
+    background: url('../imgs/4f7ac8e0a402.png') no-repeat -52px -261px;
+    animation:heart_bounce 1s linear;
+}
+
 .sprite_small_search_icon {
     display: inline-block;
     background: url('../imgs/4f7ac8e0a402.png') no-repeat -337px -246px;
@@ -309,4 +319,3 @@ body {
 @media screen and (max-width: 480px) {
 
 }
-

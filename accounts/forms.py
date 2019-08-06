@@ -5,42 +5,45 @@ from .models import Profile
 from django.contrib.auth.models import User
 
 class SignupForm(UserCreationForm):
-    username = forms.CharField(label='사용자이름', widget=forms.TextInput(attrs={
+    username = forms.CharField(label='사용자명', widget=forms.TextInput(attrs={
         'pattern': '[a-zA-Z0-9]+',
-        'title': '특수문자, 공백 입력안됨',
+        'title': '특수문자, 공백 입력불가',
     }))
-    
+
     nickname = forms.CharField(label='닉네임')
-    picture = forms.ImageField(label='프로필 사진')
-    
-    class Meta(UserCreationForm.Meta):
-        fields = UserCreationForm.Meta.fields + ('email',)
-        
+    picture = forms.ImageField(label='프로필 사진', required=False)
+
+    class Meta(UserCreationForm.Meta): # UserCreationForm 의 email 필드를 가져옴
+        fields = UserCreationForm.Meta.fields + ('email',)  # NOTE: User 모델의 email field 사용
+
+    # NOTE: clean_<필드명> 메서드를 활용하여, is_valid() 메소드 실행시 nickname 필드에 대한 유효성 검증 실행
     def clean_nickname(self):
         nickname = self.cleaned_data.get('nickname')
         if Profile.objects.filter(nickname=nickname).exists():
-            raise forms.ValidationError('이미 존재하는 별명 이에요')
+            raise forms.ValidationError('이미 존재하는 닉네임 입니다.')
         return nickname
-    
+
     def clean_email(self):
         email = self.cleaned_data.get('email')
         User = get_user_model()
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError('이미 사용중인 이메일 이에요')
+            raise forms.ValidationError('사용중인 이메일 입니다.')  # NOTE: 유효성 검사 에러메시지 생성
         return email
-    
+
     def clean_picture(self):
         picture = self.cleaned_data.get('picture')
         if not picture:
             picture = None
         return picture
-    
+
     def save(self):
-        user = super().save()
+        user = super().save()   # super 자식 클래스에서 부모클래스의 내용을 사용하고 싶을 경우 사용
+        # INSERT INTO post VALUES 와 같은 의미
+        # https://wayhome25.github.io/django/2017/04/01/django-ep9-crud/
         Profile.objects.create(
             user=user,
             nickname=self.cleaned_data['nickname'],
-            picture=self.cleaned_date['picture'],)
+            picture=self.cleaned_data['picture'], )
         return user
         
         
