@@ -89,7 +89,7 @@
         }
     }
     
-    
+    window.addEventListener('scroll',scrollfunc);
     contents.addEventListener('click', eventHandler);
 
 

@@ -1,0 +1,42 @@
+{% extends "accounts/layout.html" %}
+
+
+{% block content %}
+
+<div id="main_container">
+
+        <div class="form_container">
+
+            <div class="form">
+
+
+                <h1 class="sprite_insta_big_logo title"></h1>
+
+                <p>로그인에 실패했습니다</p>
+
+
+
+            </div>
+
+            <div class="bottom_box">
+                <div>
+                    <span>아이디가 없으신가요?</span><a href="{% url 'accounts:signup' %}">회원가입</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

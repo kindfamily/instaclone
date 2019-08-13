@@ -1,0 +1,56 @@
+{% extends "accounts/layout.html" %}
+
+
+{% block content %}
+
+<div id="main_container">
+
+        <div class="form_container">
+
+            <div class="form">
+
+
+                <h1 class="sprite_insta_big_logo title"></h1>
+
+                <form method="POST" action="{% url 'accounts:login'%}">
+                    {% csrf_token %}
+                    
+                    <p class="login_user_name">
+                        <label for="id_username">사용자명:</label>
+                        <input id="{{ form.username.id_for_label }}" maxlength="15" name="{{ form.username.html_name }}">
+                    </p>
+
+                    <p class="login_user_password">
+                        <label for="id_username">비밀번호:</label>
+                        <input id="{{ form.password.id_for_label }}" maxlength="120" name="{{ form.password.html_name }}" type="password">
+                    </p>
+
+                    <input class="submit_btn" type="submit" value="로그인">
+                </form>
+
+
+
+            </div>
+
+            <div class="bottom_box">
+                <div>
+                    <span>아이디가 없으신가요?</span><a href="{% url 'accounts:signup' %}">회원가입</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

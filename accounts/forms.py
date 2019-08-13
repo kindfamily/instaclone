@@ -1,8 +1,14 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import Profile
 from django.contrib.auth.models import User
+
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+
 
 class SignupForm(UserCreationForm):
     username = forms.CharField(label='사용자명', widget=forms.TextInput(attrs={
@@ -13,7 +19,7 @@ class SignupForm(UserCreationForm):
     nickname = forms.CharField(label='닉네임')
     picture = forms.ImageField(label='프로필 사진', required=False)
 
-    class Meta(UserCreationForm.Meta): # UserCreationForm 의 email 필드를 가져옴
+    class Meta(UserCreationForm.Meta):
         fields = UserCreationForm.Meta.fields + ('email',)  # NOTE: User 모델의 email field 사용
 
     # NOTE: clean_<필드명> 메서드를 활용하여, is_valid() 메소드 실행시 nickname 필드에 대한 유효성 검증 실행
@@ -37,28 +43,9 @@ class SignupForm(UserCreationForm):
         return picture
 
     def save(self):
-        user = super().save()   # super 자식 클래스에서 부모클래스의 내용을 사용하고 싶을 경우 사용
-        # INSERT INTO post VALUES 와 같은 의미
-        # https://wayhome25.github.io/django/2017/04/01/django-ep9-crud/
+        user = super().save()
         Profile.objects.create(
             user=user,
             nickname=self.cleaned_data['nickname'],
             picture=self.cleaned_data['picture'], )
         return user
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-    
-    
