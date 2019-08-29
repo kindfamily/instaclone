@@ -1,6 +1,5 @@
 {% extends "accounts/layout.html" %}
 
-
 {% block content %}
 
 <div id="main_container">
@@ -10,17 +9,16 @@
             <div class="form">
 
 
-                <h1 class="sprite_insta_big_logo title"></h1>
-
-                <p>로그인에 실패했습니다</p>
-
-
+                <h1 class="sprite_insta_big_logo title">
+                    로그인에 실패하셨네요 ㅠ ㅠ :)
+                </h1>
+                <p>아이디가 없다면 회원가입을 해주세요</p>
 
             </div>
 
             <div class="bottom_box">
                 <div>
-                    <span>아이디가 없으신가요?</span><a href="{% url 'accounts:signup' %}">회원가입</a>
+                    <span>아이디가 없으신가요?</span><a href="#">회원가입</a>
                 </div>
             </div>
 
@@ -28,14 +26,6 @@
         </div>
 
     </div>
-
-
-
-
-
-
-
-
 
 
 

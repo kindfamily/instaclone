@@ -30,14 +30,15 @@
 
 
     <title>instagram</title>
-    
-    <link rel="stylesheet" href="{% static 'css/common.css' %}">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link rel="stylesheet" href="{% static 'css/new_post.css' %}">
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
     <link rel="shortcut icon" href="{% static 'imgs/instagram.png' %}">
+    
+    {% block head %}
+    {% endblock %}
+    
+    
+    
 
 </head>
 <body>

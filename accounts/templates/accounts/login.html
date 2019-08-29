@@ -1,6 +1,5 @@
 {% extends "accounts/layout.html" %}
 
-
 {% block content %}
 
 <div id="main_container">
@@ -12,7 +11,7 @@
 
                 <h1 class="sprite_insta_big_logo title"></h1>
 
-                <form method="POST" action="{% url 'accounts:login'%}">
+                <form method="POST" action="{% url 'accounts:login' %}">
                     {% csrf_token %}
                     
                     <p class="login_user_name">
@@ -22,7 +21,7 @@
 
                     <p class="login_user_password">
                         <label for="id_username">비밀번호:</label>
-                        <input id="{{ form.password.id_for_label }}" maxlength="120" name="{{ form.password.html_name }}" type="password">
+                        <input id="{{ form.password.id_for_label }}" maxlength="15"  name="{{ form.password.html_name }}" type="password" >
                     </p>
 
                     <input class="submit_btn" type="submit" value="로그인">
@@ -42,10 +41,6 @@
         </div>
 
     </div>
-
-
-
-
 
 
 

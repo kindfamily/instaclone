@@ -23,6 +23,7 @@ body {
     height: 23px;
 }
 
+
 .sprite_user_icon_outline {
     display: inline-block;
     background: url('../imgs/4f7ac8e0a402.png') no-repeat -272px -182px;
@@ -30,7 +31,41 @@ body {
     height: 24px;
 }
 
-.sprite_heart_icon_outline {
+.preview .preview-bg {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  background-image: url(/static/images/sprites/abfe22.png);
+  background-size: 413px 391px;
+  background-position: -93px -52px;
+}
+
+
+
+/* 북마크 */
+.sprite_bookmark_outline {
+    display: inline-block;
+    background: url('../imgs/4f7ac8e0a402.png') no-repeat -237px -286px;
+    width: 19px;
+    height: 24px;
+}
+
+.sprite_bookmark_outline.on {
+    background: url('../imgs/4f7ac8e0a402.png') no-repeat -159px -286px;
+    animation:heart_bounce 1s linear;
+}
+.sprite_bookmark_outline.off {
+    background: url('../imgs/4f7ac8e0a402.png') no-repeat -185px -286px;
+    animation:heart_bounce 1s linear;
+}
+
+
+/* 좋아요 */                                                                                                      
+.sprite_heart_icon_outline{
     display: inline-block;
     background: url('../imgs/4f7ac8e0a402.png') no-repeat -52px -261px;
     width: 24px;
@@ -47,6 +82,8 @@ body {
     animation:heart_bounce 1s linear;
 }
 
+
+
 .sprite_small_search_icon {
     display: inline-block;
     background: url('../imgs/4f7ac8e0a402.png') no-repeat -337px -246px;
@@ -57,7 +94,7 @@ body {
 .sprite_more_icon {
     display: inline-block;
     background: url('../imgs/4f7ac8e0a402.png') no-repeat -301px -218px;
-    width: 15px;
+    width: 13px;
     height: 3px;
 }
 
@@ -319,3 +356,4 @@ body {
 @media screen and (max-width: 480px) {
 
 }
+
