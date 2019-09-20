@@ -49,7 +49,7 @@
         <section class="h_inner">
 
             <h1 class="logo">
-                <a href="index.html">
+                <a href="{% url 'post:post_list' %}">
                     <div class="sprite_insta_icon"></div>
                     <div>
                         <div class="sprite_write_logo"></div>
@@ -68,7 +68,7 @@
 
 
             <div class="right_icons">
-                <div class="sprite_camera_icon"><a href="new_post.html"></a></div>
+                <div class="sprite_camera_icon"><a href="{% url 'post:post_new' %}"></a></div>
                 <div class="sprite_compass_icon"><a href="#"></a></div>
                 <div class="sprite_heart_icon_outline"><a href="follow.html"></a></div>
                 <div class="sprite_user_icon_outline"><a href="login.html"></a></div>
@@ -81,7 +81,8 @@
 
 </section>
     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="{% static 'js/insta.js' %}"></script>
     
 </body>

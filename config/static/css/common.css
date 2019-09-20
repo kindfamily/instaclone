@@ -36,7 +36,7 @@ body {
   height: 80px;
   display: inline-block;
   position: absolute;
-  top: 55%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
   background-image: url(/static/images/sprites/abfe22.png);

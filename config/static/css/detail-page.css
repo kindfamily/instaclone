@@ -1,0 +1,416 @@
+
+
+.contents{
+    max-width:933px;
+    display: flex;
+    border: 1px solid rgba(0,0,0,.0975);
+    border-radius: 3px;
+    background: #fff;
+}
+
+.contents .img_section{
+    overflow: hidden;
+    max-width: 598px;
+    border-right: 1px solid rgba(0,0,0,.0975);
+
+}
+
+.contents .img_section .trans_inner{
+    /*width: 2448px;*/
+    font-size: 0;
+}
+
+.contents .img_section .trans_inner > div{
+    width: 100%;
+    display: inline-block;
+}
+.contents .img_section .trans_inner img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.user_container{
+    display: flex;
+    align-items: center;
+}
+
+.user_container .profile_img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.user_container .profile_img img{
+    height: 100%;
+    width: 100%;
+}
+
+.user_container .user_name{
+    color:#262626;
+}
+.user_container .nick_name{
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.contents .top{
+
+}
+.top .more_detail{
+    position: absolute;
+    right: -60px;
+    top: 40px;
+    background:white;
+    border: 1px solid rgba(0,0,0,.0975);
+    border-radius: 3px;
+    z-index: 100;
+    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.34);
+    /*display: none;*/
+    transform-origin: left top;
+    transform:scale(0);
+    transition:all 0.3s ;
+}
+
+.sprite_more_icon.on .more_detail{
+    /*display: block;*/
+    transform:scale(1);
+
+
+}
+
+.top .more_detail > li{
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.top .more_detail > li:hover{
+    background:gray;
+}
+.user_container .country{
+    font-size: 12px;
+}
+
+.contents .img_section{
+    overflow: hidden;
+}
+
+.contents .img_section .trans_inner{
+    /*width: 2448px;*/
+    font-size: 0;
+}
+
+.contents .img_section .trans_inner > div{
+    width: 100%;
+    display: inline-block;
+}
+.contents .img_section .trans_inner img{
+    width: 100%;
+    height: 100%;
+}
+
+.detail--right_box{
+    max-width:335px;
+    width: 100%;
+}
+
+
+.detail--right_box .top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 17px;
+    position: relative;
+
+    border-bottom: 1px solid rgba(0,0,0,.0975);
+}
+
+.detail--right_box .top .sprite_more_icon{
+    cursor: pointer;
+    padding: 5px 5px;
+}
+
+.scroll_section{
+    padding:12px 16px;
+    /*height: 240px;*/
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.scroll_section .admin_container{
+    margin-bottom: 10px;
+}
+
+.scroll_section .user_container-detail{
+    margin-bottom: 10px;
+}
+.scroll_section .admin_container,
+.scroll_section .user_container-detail{
+    display: flex;
+}
+
+
+.scroll_section .admin_container .admin,
+.scroll_section .user_container-detail .user{
+    width: 32px;
+    height: 32px;
+    min-width:32px;
+    border-radius: 50%;
+    overflow:hidden;
+    margin-right: 10px;
+}
+
+
+
+.scroll_section .admin_container .admin img,
+.scroll_section .user_container-detail .user img{
+    width: 100%;
+    height: 100%;
+}
+
+/* 댓글 css 추가  */
+.commet_container{
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:#262626;
+    font-size: 14px;
+
+}
+.commet_container .nick_name{
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 1px;
+}
+
+.commet_container .commet{
+    display: flex;
+
+}
+
+.scroll_section .user_id{
+    color:#262626;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right:5px;
+}
+.scroll_section .comment{
+    line-height:1.4;
+    position: relative;
+    width: 100%;
+}
+.scroll_section .comment .icon_wrap{
+    position: absolute;
+    right: -23px;
+    top: -9px;
+    display: flex;
+    align-items: center;
+}
+
+.scroll_section .comment .icon_wrap:hover > div:nth-child(1){
+    display: block;
+}
+
+.scroll_section .comment .icon_wrap > div{
+    background: #fff;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    cursor: pointer;text-align: center;
+}
+
+.scroll_section .comment .icon_wrap > div:nth-child(1){
+    display: none;
+    transform: translate(10px,4px);
+}
+
+.scroll_section .comment .icon_wrap > div:nth-child(2){
+    background: transparent;
+}
+
+
+.try_comment{
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.scroll_section .comment .time{
+    font-size: 15px;
+    color:#999;
+    margin-top: 10px;
+}
+
+
+.bottom_icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.bottom_icons .left_icons{
+    display: flex;
+}
+
+.bottom_icons .left_icons > div{
+    margin-right: 10px;
+    cursor: pointer;
+
+
+}
+
+.bottom_icons .left_icons > div.on{
+
+}
+
+.sprite_heart_icon_outline.on{
+    background: url('../imgs/background01.png') no-repeat -26px -261px;
+    animation:heart_bounce 1s linear;
+}
+
+
+.sprite_bookmark_outline.on{
+
+}
+
+.animation-target {
+    animation: animation 1000ms linear both;
+}
+
+
+.count_likes{
+    font-weight: bold;
+    font-size: 14px;
+    color:#262626;
+    padding: 5px 20px;
+}
+
+.count_bookmark{
+    font-weight: bold;
+    font-size: 14px;
+    color:#262626;
+    padding: 5px 20px;
+}
+
+.timer{
+    font-size: 10px;
+    letter-spacing: .2px;
+    color:#999;
+    /* border-bottom: 1px solid rgba(0,0,0,.0975); */
+    padding: 10px 20px;
+}
+
+
+.commit_field{
+    min-height: 56px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.content{
+    font-size: 35px;
+    font-weight: 200;
+    display: inline-block;
+    padding-right: 25px;
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+
+.commit_field input{
+    width: 100%;
+    height: 56px;
+    border: none;
+    outline:none;
+    background:transparent;
+}
+
+
+.commit_field input::placeholder{
+    color:gray;
+}
+
+.commit_field .upload_btn{
+    font-weight: bold;
+    font-size: 14px;
+    color:#3897f0;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform:translateY(-50%);
+    cursor: pointer;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.commit_field input:focus ~ .upload_btn{
+    pointer-events: initial;
+    opacity: 1;
+}
+.commit_field .upload_btn.on{
+
+}
+
+
+
+.del_pop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.48);
+    z-index: -1;
+    opacity: 0;
+    transition:all 0.3s;
+}
+
+.del_pop.on{
+    opacity: 1;
+    z-index: 99999999999;
+}
+
+.del_pop.on .btn_box{
+    transform:translate(-50%,-50%)scale(1);
+
+}
+
+.del_pop .btn_box{
+    border-radius: 10px;
+    width: 400px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%)scale(1.1);
+    transition:all 0.2s;
+
+}
+
+
+
+.del_pop .btn_box > div{
+    padding: 20px 0;
+
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.del_pop .btn_box > div:nth-child(1){
+    border-bottom: 1px solid rgba(0,0,0,0.09);
+    color:#ed4956;
+}
+/*---------------------------detail-page*/
+
+
+

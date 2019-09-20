@@ -1,0 +1,32 @@
+@media screen and (max-width: 500px) {
+  body{
+    width:100vw;
+  }
+
+  article.post-wrap{
+    max-width:100%;
+  }
+
+  img{
+    width: 100%;
+  }
+
+  article.post-wrap header{
+    width: 100%;
+  }
+
+  .search-form {
+    display: none;
+  }
+  .mylist-content .pic {
+    padding: 0;
+  }
+
+
+}
+
+@media screen and (max-width: 935px) {
+  .mylist-container {
+    width: 100%;
+  }
+}
