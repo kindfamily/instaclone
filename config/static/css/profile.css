@@ -73,12 +73,31 @@
     margin-right: 35px;
 }
 .detail .about > span{
+    display:inline-block;
     cursor: pointer;
+    position:relative;
 }
 
 .detail .about > span:nth-child(1){
     margin-right: 50px;
 }
+
+
+.detail .about > span:after{
+    content:'';
+    width:0;
+    height:1px;
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    transition:all 0.5s;
+    background:#dd2d76;
+}
+
+.detail .about > span.on:after{
+    width:100%;
+}
+
 .contents_container{
     /*display: flex;*/
     flex-wrap: wrap;

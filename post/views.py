@@ -1,13 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.decorators import login_required
 from .models import Post
 from .forms import PostForm
 from django.contrib import messages
 
-
 def post_list(request):
-
+    
     post_list = Post.objects.all()
     
     if request.user.is_authenticated:
@@ -23,6 +21,22 @@ def post_list(request):
         return render(request, 'post/post_list.html',{
             'posts': post_list,
         })
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 @login_required
 def post_new(request):
@@ -40,6 +54,20 @@ def post_new(request):
     return render(request, 'post/post_new.html', {
         'form': form,
     })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @login_required
 def post_edit(request, pk):
@@ -62,6 +90,12 @@ def post_edit(request, pk):
         'post': post,
         'form': form,
     })
+
+
+
+
+
+
 
 @login_required
 def post_delete(request, pk):

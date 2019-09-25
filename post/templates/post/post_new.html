@@ -1,0 +1,89 @@
+{% extends "post/layout.html" %}
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/new_post.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    <div id="main_container">
+
+        <div class="post_form_container">
+            <form action="#" class="post_form" method="post" enctype="multipart/form-data">
+                <div class="title">
+                    New Post
+                </div>
+                <div class="preview">
+                    <label for="id_photo">
+                        <div class="upload">
+                            <div class="post_btn">
+                                <div class="plus_icon">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <p>포스트 이미지 추가</p>
+                                <canvas id="imageCanvas"></canvas>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" class="submit_btn" value="저장">
+            </form>
+        </div>
+    </div>
+
+<script>
+var fileInput = document.querySelector("#id_photo")
+fileInput.addEventListener('change', handleImage);
+var canvas = document.getElementById('imageCanvas')
+var ctx = canvas.getContext('2d');
+
+    
+function handleImage(e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            canvas.width = 300;
+            canvas.height = 300;
+            ctx.drawImage(img,0,0,300,300);
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
