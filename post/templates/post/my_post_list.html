@@ -81,7 +81,7 @@
              {% for post in post_list %}
                 
                 <div class="pic">
-                    {{ post.author }}
+                    <!-- {{ post.author }} -->
                     <a href="#"><img src="{{ post.photo.url }}" alt=""></a>
                 </div>
                
@@ -107,8 +107,8 @@
                                         <div class="pic">
                                             {% if user == bookmark_user.profile.user %}
                                             
-                                            {{ bookmark_user.profile.nickname }}
-                                            {{ post.author }}
+                                            <!-- {{ bookmark_user.profile.nickname }} -->
+                                            <!-- {{ post.author }} -->
                                             <a href="#"><img src="{{ post.photo.url }}" alt=""></a>
                                             
                                             {% endif %}

@@ -57,15 +57,17 @@
                                 {% endif %}
                             </div>
                             <div class="user_name">
-                                <div class="nick_name m_text">{{ post.author.profile.nickname }} {{ post.id }}</div>
+                                <div class="nick_name m_text">{{ post.author.profile.nickname }} 
+                                    <!-- {{ post.id }} -->
+                                </div>
                                 <div class="country s_text">Seoul, South Korea</div>
                             </div>
                             <div>
-                                <form action="{% url 'post:post_delete' post.pk %}" method="post">
+                                <!-- <form action="{% url 'post:post_delete' post.pk %}" method="post">
                                     {% csrf_token %}
                                     <input type="submit" value="삭제">
                                     
-                                </form>
+                                </form> -->
                                 
                             </div>
                         </div>
@@ -111,7 +113,7 @@
                                 {% endif %}
                             </div>
                             <a class="detail_link" href="{% url 'post:post_detail' post.pk%}"><div class="sprite_bubble_icon"></div></a>
-                            <div class="sprite_share_icon" data-name="share"></div>
+                            <!-- <div class="sprite_share_icon" data-name="share"></div> -->
                         </div>
                         <div class="right_icon">
                             {% if user in post.bookmark_user_set.all %}
