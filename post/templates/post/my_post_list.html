@@ -1,0 +1,151 @@
+{% extends "post/layout.html" %}
+{% load static %}
+
+
+{% block head %}    
+ <!-- 8/27일 선범 추가 css 파일    -->
+    <link rel="stylesheet" href="{% static 'css/mylist.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<div id="main_container">
+
+        <section class="b_inner">
+            
+
+            
+            
+            
+            
+            
+            <div class="hori_cont">
+                <div class="profile_wrap">
+                    <div class="profile_img">
+                        
+                        {% if user_profile.picture %}
+                        
+                        <img src="{{ user_profile.picture.url }}" alt="프로필사진">
+                        
+                        {% else %}
+                        
+                         <img src="{% static 'imgs/img_section/img01.jpg'%}" alt="프로필사진">
+                        
+                        {% endif %}
+                        
+                        
+                        
+                    </div>
+                </div>
+
+                
+                
+                
+                
+                <div class="detail">
+                    <div class="top">
+                        {% for user in target_user.all %}
+                        <div class="user_name">{{ user.profile.nickname }}</div>
+                        
+                        <a class="profile" href="{% url 'accounts:logout' %}" >로그아웃</a>
+                        {% endfor %}
+                    </div>
+
+                    <ul class="middle">
+                        <li>
+                            <span>게시물</span>
+                            {{ user.post_set.count }}
+                        </li>
+                        <li>
+                            <span>팔로워</span>
+                            {{ user.profile.follower_count }}
+                        </li>
+                        <li>
+                            <span>팔로우</span>
+                            {{ user.profile.following_count }}
+                        </li>
+                    </ul>
+                    <p class="about">
+                        <span class="nick_name on">내가쓴글</span>
+                        <span class="book_mark">북마크</span>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="mylist_contents contents_container active">
+             {% for post in post_list %}
+                
+                <div class="pic">
+                    {{ post.author }}
+                    <a href="#"><img src="{{ post.photo.url }}" alt=""></a>
+                </div>
+               
+            {% endfor %}
+            </div>
+
+
+            <div class="bookmark_contents contents_container">
+            
+                {% for post in all_post_list %}
+                
+                    
+                
+                    
+                     
+                
+                        <!-- {% if post.bookmark_user_set.all %} -->
+                            
+                                {% for bookmark_user in post.bookmark_user_set.all %}
+                
+                                    
+                                    
+                                        <div class="pic">
+                                            {% if user == bookmark_user.profile.user %}
+                                            
+                                            {{ bookmark_user.profile.nickname }}
+                                            {{ post.author }}
+                                            <a href="#"><img src="{{ post.photo.url }}" alt=""></a>
+                                            
+                                            {% endif %}
+                                        </div>
+                
+                                    
+
+                                {% endfor %}
+                
+                
+                        <!-- {% endif %} -->
+                
+                    
+ 
+<!--                 
+                        {% if post.like_count != 0 %}
+                          {% if post.like_user_set.all %}
+                              {% for like_user in post.like_user_set.all %}
+                                  {{ like_user.profile.nickname }}
+                              {% endfor %}님이 좋아합니다.
+                          {% endif %}
+                        {% endif %} -->
+                
+                {% endfor %}
+               
+            </div>
+
+
+
+
+        </section>
+    </div>
+
+{% endblock %}
+
+{% block js %}  
+
+    <script src="{% static 'js/insta.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}

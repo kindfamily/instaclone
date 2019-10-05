@@ -1,0 +1,120 @@
+{% load static %}
+
+{% for post in posts %}
+<article class="contents">
+    <header class="top">
+        <div class="user_container">
+            <div class="profile_img">
+                {% if post.author.profile.picture %}
+                <img src="{{ post.author.profile.picture.url }}" alt="프로필이미지">
+                {% else %}
+                <img src="{% static 'imgs/thumb.jpeg'%}" alt="프로필이미지">
+                {% endif %}
+            </div>
+            <div class="user_name">
+                <div class="nick_name m_text">{{ post.author.profile.nickname }} {{ post.id }}</div>
+                <div class="country s_text">Seoul, South Korea</div>
+            </div>
+            <div>
+                <form action="{% url 'post:post_delete' post.pk %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="삭제">
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="sprite_more_icon" data-name="more">
+            <ul class="toggle_box">
+                <li>
+                {% if user.profile in post.author.profile.get_follower %}        
+                <input type="submit" class="follow" value="팔로잉" data-name="follow" name="{{ post.author.profile.id }}">
+                {% else %}
+                <input type="submit" class="follow" value="팔로우" data-name="follow" name="{{ post.author.profile.id }}">                                    
+                {% endif %}
+                </li>
+                {% if post.author == user %}               
+                <li>
+                    <a class="post-edit" href="{% url 'post:post_edit' post.pk %}">수정</a>
+                </li>
+                <li>
+                    <form class="post-delete-form" action="{% url 'post:post_delete' post.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="post-delete" value="삭제">
+                    </form>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </header>
+
+    <div class="img_section">
+        <div class="trans_inner">
+            <div><img src="{{ post.photo.url }}" alt="visual01"></div>
+        </div>
+    </div>
+
+    <div class="bottom_icons">
+        <div class="left_icons">
+            <div class="heart_btn">
+                {% if user in post.like_user_set.all %}
+                <div class="sprite_heart_icon_outline on" name="{{ post.id }}" data-name="heartbeat"></div>
+                {% else %}
+                <div class="sprite_heart_icon_outline" name="{{ post.id }}" data-name="heartbeat"></div>
+                {% endif %}
+            </div>
+            <div class="sprite_bubble_icon"></div>
+            <div class="sprite_share_icon" data-name="share"></div>
+        </div>
+        <div class="right_icon">
+            {% if user in post.bookmark_user_set.all %}
+            <div class="sprite_bookmark_outline on" name="{{ post.id }}" data-name="bookmark"></div>
+            {% else %}
+            <div class="sprite_bookmark_outline" name="{{ post.id }}" data-name="bookmark"></div>
+            {% endif%}
+        </div>
+    </div>
+
+    <div class="likes m_text">
+
+        <span id="like-count-{{ post.id }}">좋아요{{ post.like_count }}개</span>
+        <span id="bookmark-count-{{ post.id }}">북마크{{ post.bookmark_count}}개</span>
+
+    </div>
+
+    <div class="comment_container">
+        <div class="comment" id="comment-list-ajax-post{{post.id}}">
+            {% for comment in post.comment_set.all %}
+            <div class="comment-detail" id="comment{{ comment.id }}">
+                <div class="nick_name m_text">{{ comment.author.profile.nickname}}</div>
+                <div>{{comment.content}}</div>
+                {% if user == comment.author %}
+<input type="button" class="del-comment" data-name="comment_delete" value="삭제" name="{{ comment.id }}">
+                {% endif %}
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="small_heart">
+            <div class="sprite_small_heart_icon_outline"></div>
+        </div>
+    </div>
+
+    <div class="timer">{{ post.created_at|timesince }}</div>
+
+    <div class="comment_field" id="add-comment-post{{post.id}}">
+        {% if user.is_authenticated %}
+        {{ comment_form }}
+        <input type="text" placeholder="댓글달기...">
+        <div class="upload_btn m_text" name="{{post.id}}" data-name="comment">게시</div>
+        {% else %}
+        {{ comment_form }}
+        <input type="text" placeholder="댓글달기...">
+        <div class="upload_btn m_text" name="{{post.id}}" data-name="comment" onclick="alert('댓글을 작성하려면 로그인이 필요합니다')">게시</div>
+        {% endif%}
+    </div>
+
+</article>
+{% endfor %}
