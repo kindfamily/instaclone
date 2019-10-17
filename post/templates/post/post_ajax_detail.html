@@ -1,10 +1,7 @@
 <script type="text/javascript">
+
 (function(){
     const delegation = document.querySelector('.contents_box');
-    const side_box = document.querySelector('.side_box');
-    const header = document.querySelector('#header');
-    
-    
     
     function delegationFunc(e) {
         let elem = e.target;
@@ -34,6 +31,7 @@
                 success: function (response){
                     // alert('성공!');
                     var likeCount = document.querySelector('#like-count-'+pk);
+                    console.log(likeCount)
                     likeCount.innerHTML = '좋아요' + response.like_count + '개';
                 },
                 error: function (request, status, error) {
@@ -43,11 +41,10 @@
             
             
         }else if (elem.matches('[data-name="bookmark"]')){
-            console.log('북마크!');
-
+            console.log("북마크");
             var pk = elem.getAttribute('name');
             console.log(pk);
-
+            
             $.ajax({
                 type: "POST",
                 url: "{% url 'post:post_bookmark' %}",
@@ -62,26 +59,20 @@
                     alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 },
             });
+            
         }else if (elem.matches('[data-name="comment"]')){
-            console.log('새댓글')
+            console.log('새댓글');
             var pk = elem.getAttribute('name');
             var content = document.querySelector('#add-comment-post'+pk+'>input[type=text]').value;
+            console.log(pk);
             console.log(content);
-            
             if(content.length > 140) {
                 alert("댓글은 최대 140자 입력 가능합니다. 현재 글자수 :"+content.length);
                 return;
             }
-            
-            if(content.length == 0) {
-                alert("글자를 하나라도 넣어주세요. 현재 글자수 :"+content.length);
-                return;
-            }
-            
-            
             $.ajax({
                 type: "POST",
-                url: "{% url 'post:comment_new' %}",
+                url: "{% url 'post:comment_new_detail' %}",
                 data: {
                     'pk': pk,
                     'content': content,
@@ -142,86 +133,14 @@
                 }
             })
         }
+        
+        
+        
         elem.classList.toggle('on');
     }
     
     
-    function resizefunc(){
-        // console.log('리사이즈')
-        if(pageYOffset >= 10){
-            let calcWidth = (window.innerWidth * 0.5) + 167;
-            if(side_box){
-                side_box.style.left = calcWidth + "px";
-            }
-        }
-    }
-    
-    function scrollfunc(){
-        var scrollHeight = pageYOffset + window.innerHeight;
-        var documentHeight = document.body.scrollHeight;
-        
-        if (pageYOffset >= 10){
-            header.classList.add('on');
-            resizefunc();
-            if(side_box){
-                side_box.classList.add('on');
-            }
-        } else {
-            header.classList.remove('on');
-            if(side_box){
-                side_box.classList.remove('on');
-                side_box.removeAttribute('style');
-            }
-        }
-        
-        if(scrollHeight >= documentHeight){
-            var page = document.querySelector('#page').value;
-            
-            console.log(page);
-            
-            var end_page = {{ posts.paginator.num_pages }}
-            if(page > end_page){
-                return;
-            }
-            document.querySelector('#page').value = parseInt(page) + 1;
-            callMorePostAjax(page);
-        }
-    }
-    
-    function callMorePostAjax(page) {
-        var end_page = {{ posts.paginator.num_pages }};
-        
-        
-        
-        if(page > end_page){
-            return;
-        }
-        $.ajax({
-            type: 'POST',
-            url: "{% url 'post:post_list' %}",
-            data: {
-                'page': page,
-                'csrfmiddlewaretoken': '{{ csrf_token }}'
-            },
-            dataType: 'html',
-            success: addMorePostAjax,
-            error: function(request, status, error){
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-            }
-        });
-    }
- 
-    function addMorePostAjax(data, textStatus, jqXHR) {
-    let post = document.querySelector('#post_list_ajax');
-        
-        post.insertAdjacentHTML("beforeend", data);
-        
-        
-    }
-
-
-    window.addEventListener('resize', resizefunc);
-    window.addEventListener('scroll', scrollfunc);
     delegation.addEventListener('click', delegationFunc);
 })();
+
 </script>

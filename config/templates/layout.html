@@ -37,8 +37,6 @@
     {% block head %}
     {% endblock %}
     
-    
-    
 
 </head>
 <body>
@@ -72,18 +70,15 @@
                 <!-- <div class="sprite_compass_icon"><a href="#"></a></div> -->
                 <!-- <div class="sprite_heart_icon_outline"><a href="follow.html"></a></div> -->
                 
-                
                 {% if user.is_authenticated %}
                 
-                <a href="{% url 'post:my_post_list' user.username %}"><div class="sprite_user_icon_outline"></div></a>
+                <div class="sprite_user_icon_outline"><a href="{% url 'post:my_post_list' user.username %}"></a></div>
                 
                 {% else %}
                 
-                <a href="{% url 'account_login' %}"><div class="sprite_user_icon_outline"></div></a>
+                <div class="sprite_user_icon_outline"><a href="{% url 'accounts:login' %}"></a></div>
                 
                 {% endif %}
-                
-                
             </div>
         </section>
     </header>
@@ -93,11 +88,16 @@
 
 </section>
     
-  <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- <script src="{% static 'js/insta.js' %}"></script> -->
-    {% block js %}  
-    {% endblock %}
+    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- <script src="{% static 'js/insta.js' %}"></script> -->
+    {% block js %}
+    {% endblock %} 
+    
+    
+
+
+
     
 </body>
 </html>

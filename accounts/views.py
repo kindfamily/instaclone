@@ -19,6 +19,31 @@ def signup(request):
             return redirect('accounts:login')
     else:
         form = SignupForm()
+        
+        
+    if request.is_ajax():
+        profile, created_at = Profile.objects.get_or_create(user=user_id)
+
+        if created_at:
+            message = '이미 가입된 사용자입니다!'
+            status = 1
+        else:
+            profile.delete()
+            message = '회원가입 간입가능'
+            status = 0
+
+        context = {
+            'message': message,
+            'status': status,
+        }
+        return HttpResponse(json.dumps(context), content_type="application/json")
+        
+        
+        return render(request, 'post/post_list_ajax.html', {
+            'posts': posts,
+            'comment_form': comment_form,
+        })  
+        
     return render(request, 'accounts/signup.html', {
         'form': form,
     })

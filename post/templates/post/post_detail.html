@@ -1,42 +1,32 @@
 {% extends "post/layout.html" %}
 {% load static %}
 {% load post_extras %}
+
+
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/detail-page.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/detail-page.css' %}">
 {% endblock %}
 
-
 {% block content %}
-
-    <div id="main_container">
-
+<div id="main_container">
         <section class="b_inner">
-
             <div class="contents_box">
-
                 <article class="contents cont01">
-
                     <div class="img_section">
                         <div class="trans_inner">
                             <div><img src="{{ post.photo.url }}" alt=""></div>
                         </div>
                     </div>
-
-
                     <div class="detail--right_box">
-
                         <header class="top">
                             <div class="user_container">
                                 <div class="profile_img">
                                     {% if post.author.profile.picture %}
-                                    <img src="{{ post.author.profile.picture.url }}" alt="프로필이미지">
+                                    <img src="{{ post.author.profile.picture.url }}" alt="">
                                     {% else %}
-                                    <img src="{% static 'imgs/thumb.jpeg'%}" alt="프로필이미지">
-                                    {% endif %}
-                                    
-                                    
-                                    
+                                    <img src="{% static 'imgs/thumb.jpeg' %}" alt="">
+                                    {% endif%}
                                 </div>
                                 <div class="user_name">
                                     <div class="nick_name">{{ post.author.profile.nickname }} {{ post.id }}</div>
@@ -46,70 +36,81 @@
                             <div class="sprite_more_icon" data-name="more">
                                 <ul class="more_detail">
                                     <li>
-                                    
-{% if user.profile in post.author.profile.get_follower %}        
-<input type="submit" class="follow" value="팔로잉" data-name="follow" name="{{ post.author.profile.id }}">
-{% else %}
-<input type="submit" class="follow" value="팔로우" data-name="follow" name="{{ post.author.profile.id }}">
-{% endif %}
-                                    
-                                </li>
-                                {% if post.author == user %}               
-                                <li>
-                                    <a class="post-edit" href="{% url 'post:post_edit' post.pk %}">수정</a>
-                                </li>
-                                <li>
-                                    <form class="post-delete-form" action="{% url 'post:post_delete' post.pk %}" method="post">
-                                        {% csrf_token %}
-                                        <input type="submit" class="post-delete" value="삭제">
-                                    </form>
-                                </li>
-                                {% endif %}
+                                    {% if user.profile in post.author.profile.get_follower %}
+                                    <input type="submit" class="follow" value="팔로잉" data-name="follow" name="{{ post.author.profile.id }}">
+                                    {% else %}
+                                    <input type="submit" class="follow" value="팔로우" data-name="follow" name="{{ post.author.profile.id }}">
+                                    {% endif %}
+                                    </li>
+                                    {% if post.author == user %}
+                                    <li>
+                                        <a class="post-edit" href="{% url 'post:post_edit' post.pk %}">수정</a>
+                                    </li>
+                                    <li>
+                                        <form class="post-delete-form" action="{% url 'post:post_delete' post.pk %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="submit" class="post-delete" value="삭제">
+                                        </form>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </div>
-
                         </header>
-
-                        <section class="scroll_section" id="comment-list-ajax-post{{post.id}}">
+                        <section class="scroll_section" id="comment-list-ajax-post{{post.id}}">       
                             {% for comment in post.comment_set.all %}
-                                <div class="user_container-detail" id="comment{{ comment.id }}">
-                                    <div class="user"><img src="{{ comment.author.profile.picture.url }}"></div>
-                                    <div class="comment">
-                                        <span class="user_id">{{ comment.author.profile.nickname}}</span>
-                                        <span>{{comment.content}}</span>
-                                        <span>
+                            <div class="user_container-detail" id="comment{{ comment.id }}">
+                                <div class="user"><img src="{{ comment.author.profile.picture.url }}" alt="user"></div>
+                                <div class="comment">
+                                    <span class="user_id">{{ comment.author.profile.nickname }}</span>
+                                    <span>{{ comment.content }}</span>
+                                    <span>
                                         {% if user == comment.author %}
                                         <input type="button" class="del-comment" data-name="comment_delete" value="삭제" name="{{ comment.id }}">
                                         {% endif %}
-                                        </span>
-                                        <div class="time">{{ comment.created_at|timesince }}</div>
-                                    </div>
+                                    </span>
+                                    <div class="time">{{ comment.created_at|timesince }}</div>
                                 </div>
+                            </div>
                             {% endfor %}
                         </section>
-                        <div class="bottom_icons">
+                        
+                        
+                          <div class="bottom_icons">
                             <div class="left_icons">
                                 <div class="heart_btn">
+                                    {% if user in post.like_user_set.all %}
+                                    <div class="sprite_heart_icon_outline on" name="{{ post.id }}" data-name="heartbeat"></div>
+                                    {% else %}
                                     <div class="sprite_heart_icon_outline" name="{{ post.id }}" data-name="heartbeat"></div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <div class="sprite_bubble_icon"></div>
                                 </div>
                                 <!-- <div>
-                                    <div class="sprite_bubble_icon"></div>
-                                </div> -->
-                                <div>
                                     <div class="sprite_share_icon" data-name="share"></div>
-                                </div>
+                                </div> -->
                             </div>
 
                             <div class="right_icon">
-                                <div class="sprite_bookmark_outline" name="{{ post.id }}" data-name="bookmark"></div>
+                                    {% if user in post.bookmark_user_set.all%}
+                                    <div class="sprite_bookmark_outline on" name="{{ post.id }}" data-name="bookmark"></div>
+                                    {% else %}
+                                    <div class="sprite_bookmark_outline" name="{{ post.id }}" data-name="bookmark"></div>
+                                    {% endif %}
                             </div>
                         </div>
+
                         <div class="count_likes">
-                            <span id="like-count-{{ post.id }}">좋아요{{ post.like_count }}개</span>
-                            <span id="bookmark-count-{{ post.id }}">북마크{{ post.bookmark_count}}개</span>
+                            
+                            <span id="like-count-{{ post.id }}" class="count">좋아요{{ post.like_count }}개</span>
+                            <span id="bookmark-count-{{ post.id }}" >북마크{{ post.bookmark_count }}개</span>
+                            
                         </div>
+                        
                         <div class="timer">{{ post.created_at|timesince }}</div>
                         <div class="content">{{ post|add_link|safe|linebreaksbr }}</div>
+                        
 
                         <div class="comment_field" id="add-comment-post{{post.id}}">
                             {% if user.is_authenticated %}
@@ -117,14 +118,18 @@
                             <div class="upload_btn m_text" name="{{post.id}}" data-name="comment">게시</div>
                             {% else %}
                             {{ comment_form }}
-                            <div class="upload_btn m_text" name="{{post.id}}" data-name="comment" onclick="alert('댓글을 작성하려면 로그인이 필요합니다')">게시</div>
-                            {% endif%}      
+                            <div class="upload_btn m_text" name="{{post.id}}" data-name="comment" onclick="alert('로그인해주세요')">게시</div>
+                            {% endif %}
                         </div>
+                        
+                        
+                        
                     </div>
                 </article>
             </div>
         </section>
     </div>
+
     <div class="del_pop">
         <div class="btn_box">
             <div class="del">삭제</div>
@@ -133,3 +138,14 @@
    </div>
 {% include "post/script_ajax_detail.html" %}
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+

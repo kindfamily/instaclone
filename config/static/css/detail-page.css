@@ -314,16 +314,6 @@
     position: relative;
 }
 
-/* .content{
-    font-size: 35px;
-    font-weight: 200;
-    display: inline-block;
-    padding-right: 25px;
-    margin-top: 10px;
-    padding: 10px 20px;
-} */
-
-
 .commit_field input{
     width: 100%;
     height: 56px;

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+(function(){
+    const loginForm = document.querySelector('.login_user_name');
+    function signupcheck(){
+         
+        var user_id = $('#id_username').val();
+
+        $.ajax({
+            type: "POST",
+            url: "{% url 'accounts:signup' %}"
+            data: {'user_id': user_id},                    
+            datatype: "json",
+            success: function(data)
+            {
+                alert('성공');
+            },
+            error: function (request, status, error) {
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            },
+
+    }
+    loginForm.addEventListener('load', signupcheck);
+     
+        
+})();
+</script>

@@ -112,7 +112,7 @@
                                 <div class="sprite_heart_icon_outline" name="{{ post.id }}" data-name="heartbeat"></div>
                                 {% endif %}
                             </div>
-                            <a class="detail_link" href="{% url 'post:post_detail' post.pk%}"><div class="sprite_bubble_icon"></div></a>
+                            <a href="{% url 'post:post_detail' post.pk %}"><div class="sprite_bubble_icon"></div></a>
                             <!-- <div class="sprite_share_icon" data-name="share"></div> -->
                         </div>
                         <div class="right_icon">
