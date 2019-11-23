@@ -6,8 +6,6 @@
 
 프리뷰 | [다운로드](https://github.com/kindfamily/instaclone_backend_source/settings) | [깃헙](https://github.com/kindfamily/instaclone)
 
-
-
 ##### 동작
 
 새글작성, 수정 ,삭제 ,좋아요 ,북마크 ,디테일페이지 ,프로필화면
