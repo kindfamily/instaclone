@@ -96,7 +96,7 @@ def post_list(request, tag=None):
     
     if request.method == 'POST':
         tag = request.POST.get('tag')
-        tag_clean = ''.join(e for e in gag if e.isalnum())
+        tag_clean = ''.join(e for e in tag if e.isalnum())
         return redirect('post:post_search', tag_clean)
     
     
