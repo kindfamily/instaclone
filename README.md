@@ -10,7 +10,7 @@
 
 프리뷰 | [다운로드](https://github.com/kindfamily/instaclone_backend_source/settings) | [깃헙](https://github.com/kindfamily/instaclone)
 
-
+<br>
 
 ### 동작
 
@@ -18,7 +18,7 @@
 
 새글작성, 수정 ,삭제 ,좋아요 ,북마크 ,디테일페이지 ,프로필화면
 
-
+<br>
 
 ### 초기버전
 
@@ -28,7 +28,7 @@
 
 ##### git action을 이용한 디플로이 방법 ( 제작중 )
 
-
+<br>
 
 ### 꼴라보
 
@@ -38,7 +38,7 @@
 
 lalabel, jsp, ruby on rails
 
-
+<br>
 
 **contact**
 
@@ -51,4 +51,3 @@ lalabel, jsp, ruby on rails
 - [페이스북메시지](m.me/kind.familes)
 
 - [유튜브](https://www.youtube.com/channel/UCHGrcaroTQjz9wyASXQAmYQ)
-
