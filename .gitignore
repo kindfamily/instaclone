@@ -1,0 +1,3 @@
+# Django stuff:
+venv/
+db.sqlite3

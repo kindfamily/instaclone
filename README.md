@@ -40,7 +40,7 @@ lalabel, jsp, ruby on rails
 
 <br>
 
-**contact**
+**contact us**
 
 - [HOME](http://kind-family.com/)
 
