@@ -263,7 +263,7 @@ body {
 }
 
 #header .right_icons {
-    width: 61px;
+    width: 132px;
     display: flex;
     justify-content: space-between;
 }

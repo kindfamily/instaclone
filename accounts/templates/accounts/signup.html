@@ -4,7 +4,7 @@
 
 {% block head %}
 
-<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}">
 
 {% endblock%}
 
@@ -27,7 +27,7 @@
 
             <div class="bottom_box">
                 <div>
-                    <span>아이디가 있다면</span><a href="">로그인</a>
+                    <span>아이디가 있다면</span><a href="{% url 'accounts:login' %}">로그인</a>
                 </div>
             </div>
 
