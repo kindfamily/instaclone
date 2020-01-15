@@ -9,7 +9,7 @@
 
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
+
     <!-- Facebook Meta Tags / 페이스북 오픈 그래프 -->
     <meta property="og:url" content="http://kindtiger.dothome.co.kr/insta">
     <meta property="og:type" content="website">
@@ -33,10 +33,10 @@
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/common.css' %}">
     <link rel="shortcut icon" href="{% static 'imgs/instagram.png' %}">
-    
+
     {% block head %}
     {% endblock %}
-    
+
 
 </head>
 <body>
@@ -57,11 +57,11 @@
 
             <div class="search_field">
                 <form class="search-form" action="{% url "post:post_list" %}" method="post">
-                    {% csrf_token %}                    
-                    <input class="tag-search" type="text" name="tag" placeholder="검색" pattern="#?[\wㄱ-ㅎ|ㅏ-ㅣ|가-힣]+" title="특수문자, 공백 입력불가" required >
+                    {% csrf_token %}
+                    <input class="tag-search" type="text" name="tag" placeholder="태그검색" pattern="#?[\wㄱ-ㅎ|ㅏ-ㅣ|가-힣]+" title="특수문자, 공백 입력불가" required >
                     <div class="fake_field">
                         <span class=sprite_small_search_icon></span>
-                        <span>검색</span>
+                        <span>태그검색</span>
                     </div>
                 </form>
             </div>
@@ -70,16 +70,16 @@
             <div class="right_icons">
                 <div class="sprite_camera_icon"><a href="{% url 'post:post_new' %}"></a></div>
                 <div class="sprite_compass_icon"><a href="#"></a></div>
-                <div class="sprite_heart_icon_outline"><a href="follow.html"></a></div>
-                
+                <div class="sprite_heart_icon_outline"><a href="#"></a></div>
+
                 {% if user.is_authenticated %}
-                
+
                 <div class="sprite_user_icon_outline"><a href="{% url 'post:my_post_list' user.username %}"></a></div>
-                
+
                 {% else %}
-                
+
                 <div class="sprite_user_icon_outline"><a href="{% url 'accounts:login' %}"></a></div>
-                
+
                 {% endif %}
             </div>
         </section>
@@ -89,17 +89,17 @@
     {% endblock %}
 
 </section>
-    
+
     <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- <script src="{% static 'js/insta.js' %}"></script> -->
     {% block js %}
-    {% endblock %} 
-    
-    
+    {% endblock %}
 
 
 
-    
+
+
+
 </body>
 </html>

@@ -24,7 +24,7 @@
 
 ------
 
-초보몽키님 블로그( [블로그 | [깃헙](https://github.com/kindfamily/Instagram) ) > 리뉴얼 >현재의 [소스코드](https://github.com/kindfamily/instaclone)
+초보몽키님 블로그( 블로그 | [프리뷰](http://hyunjoolee.pythonanywhere.com/post/) | [깃헙](https://github.com/kindfamily/Instagram) ) > 리뉴얼 >현재의 [소스코드](https://github.com/kindfamily/instaclone)
 
 ##### git action을 이용한 디플로이 방법 ( 제작중 )
 

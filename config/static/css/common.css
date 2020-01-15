@@ -64,7 +64,7 @@ body {
 }
 
 
-/* 좋아요 */                                                                                                      
+/* 좋아요 */
 .sprite_heart_icon_outline{
     display: inline-block;
     background: url('../imgs/4f7ac8e0a402.png') no-repeat -52px -261px;
@@ -237,7 +237,7 @@ body {
     background: #fafafa;
     border: solid 1px #dbdbdb;
     border-radius: 3px;
-    padding: 3px 30px 3px 30px;
+    padding: 3px 30px 3px 48px;
     color: #999;
     font-weight: 400;
     text-align: left;
@@ -263,7 +263,7 @@ body {
 }
 
 #header .right_icons {
-    width: 132px;
+    width: 140px;
     display: flex;
     justify-content: space-between;
 }
@@ -356,4 +356,3 @@ body {
 @media screen and (max-width: 480px) {
 
 }
-
