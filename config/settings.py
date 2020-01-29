@@ -105,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #     '127.0.0.1',
 # ]
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'Asia/Seoul'
 
