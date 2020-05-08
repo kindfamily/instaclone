@@ -1,6 +1,6 @@
 ###### front-end source
 
-프리뷰 | [다운로드](https://github.com/kindfamily/instafrontajax) | [깃헙](https://github.com/kindfamily/instafrontajax)
+[다운로드](https://github.com/kindfamily/instafrontajax) | [깃헙](https://github.com/kindfamily/instafrontajax)
 
 <br>
 
