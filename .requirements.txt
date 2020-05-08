@@ -1,0 +1,4 @@
+Django==3.0.6
+django-allauth==0.41.0
+django-imagekit==4.0.2
+Pillow==7.1.2
