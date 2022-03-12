@@ -2,4 +2,4 @@
 Django==3.0.7
 django-allauth==0.41.0
 django-imagekit==4.0.2
-Pillow==7.0.0
+Pillow==9.0.1
